@@ -1,0 +1,26 @@
+<annotation>
+	<folder>roop</folder>
+	<filename>img(140).jpg</filename>
+	<path>C:\Users\HP\Desktop\p\Ignis-fire-detection-and-mitigation-system\dataset\smoke-dataset\images\roop\img(140).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>225</width>
+		<height>225</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>smoke</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>3</xmin>
+			<ymin>4</ymin>
+			<xmax>190</xmax>
+			<ymax>190</ymax>
+		</bndbox>
+	</object>
+</annotation>
