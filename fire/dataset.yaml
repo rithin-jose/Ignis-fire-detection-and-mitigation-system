@@ -1,5 +1,0 @@
-train: ./data/dataset/train/images/
-val: ./data/dataset/val/images/
-
-nc: 2
-names: ['Fire','smoke']
