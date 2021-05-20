@@ -57,14 +57,14 @@
 	padding-top:10%
 }
 
-#main-title{
+.main-title{
 	color: var(--white);
 	font-size: 60px;
 	font-weight: 700;
 	margin-bottom: 15%;
 }
 
-#secondary-title{
+.secondary-title{
 	color: var(--white);
 	font-size: 50px;
 	font-weight: 600;
@@ -104,7 +104,10 @@
   }
   
   .form input[type=text],
-  .form input[type=tel]{
+  .form input[type=tel],
+  .form input[type=email],
+  .form input[type=password]
+  {
     padding: 1rem;
     padding-bottom: 0.6rem;
     width: 100%;
@@ -115,7 +118,13 @@
     transition: border 0.3s ease;
   }
   
-
+  .form input[type=text]:focus,
+  .form input[type=tel]:focus,
+  .form input[type=email]:focus,
+  .form input[type=password]:focus
+  {
+    border-bottom: 3px solid var(--violet);
+  }
   
   .label {
     position: absolute;
@@ -132,11 +141,7 @@
     font-size: 0.8rem;
   }
   
-  .form input[type=text]:focus,
-  .form input[type=tel]:focus {
-    border-bottom: 3px solid var(--violet);
-  }
-
+ 
   .submit-btn{
     background-color: var(--violet);
     border: none;
@@ -147,21 +152,20 @@
     color: #fff;
     outline: 2px solid rgba(81, 18, 129, 0.5);
   }
-  
-/************************************************************************************
-                      Media Query
-***********************************************************************************/
+
+
+
 @media (max-width: 1200px) { }
 
 @media (max-width: 992px) { }
 
 @media (max-width: 768px) {
-  #main-title{
+  .main-title{
     font-size: 40px;
     text-align: center;
   }
   
-  #secondary-title{
+  .secondary-title{
     font-size: 25px;
     text-align: center;
     margin-bottom: 35px;
@@ -172,27 +176,41 @@
   }
  }
 
+/************************************************************************************
+                      desktop 2
+***********************************************************************************/
+.registred{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+/************************************************************************************
+                      desktop 3
+***********************************************************************************/
+ .secondary-background{
+  background: url('../images/sp.png');
+	height: 100vh;
+	width: 100%;
+	padding-top:10% 
+ }
+
+ .seconday-form-wrapper{
+	background-color: rgba(119, 172, 241,0.7) !important;
+}
+.secondary-text{
+  color:var(--black) !important;
+}
+
+/************************************************************************************
+                      Media Query
+***********************************************************************************/
+
+
 @media (max-width: 576px) {  }
 
-/* body{
-	background: url('../../sp.png') no-repeat;
-	background-size: auto;
-}
-.wrapper{
-	width: 100%;
-	height: 100%;
-	margin-top: 10%;
-}
-.video-window {
-	width: 100%;
-	height: 30vh;
-	background-color: #aaa;
-	border: 3px solid #666;
-	margin-bottom: 5%;
-} */
-.red{
-	background-color: red;
-}
-.green{
-	background-color: green;
-}
+@media (max-width: 1200px) { }
+
+@media (max-width: 992px) { }
+
+@media (max-width: 768px) { }
+
+@media (max-width: 576px) {  }
