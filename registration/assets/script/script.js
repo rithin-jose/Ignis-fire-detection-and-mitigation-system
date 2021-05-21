@@ -2,23 +2,35 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
   console.log("enumerateDevices() not supported.");
 }
 
+var video = document.querySelector("#videoElement");
+//   var video = document.querySelector("#videoElement");
+
 var cam = [];
 navigator.mediaDevices.enumerateDevices()
 .then(function(devices) {
   devices.forEach(function(device) {
-    console.log(device.kind);
+    console.log(device);
     if(device.kind == 'videoinput')
     {
-      cam.push(device.groupId);
-
-
-
+      if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia(
+          { video: { deviceId: { exact: device.deviceId  } } }
+        )
+          .then(function (stream) {
+            video.srcObject = stream;
+          })
+          .catch(function (error) {
+            console.log("Something went wrong!");
+          });
+      }
     }
   });
 })
 .catch(function(err) {
   console.log(err.name + ": " + err.message);
 });
+
+console.log(cam);
 
 //   var video = document.querySelector("#videoElement");
 //   var video2 = document.querySelector("#videoElement2");
