@@ -29,23 +29,24 @@
               Something went wrong
             </div>
 
-            <form action=""  class="form">
+            <div action=""  class="form">
 
                 <div class="form-field">
-                    <input type="text" name='name' placeholder=" " autofill="off" required>
+                    <input id ="name" type="text" name='name' placeholder=" " autofill="off" value="" required>
                     <span class="label">Name</span>
                 </div>
 
                 <div class="form-field">
-                    <input type="tel" name='phoneno' pattern="[1-9]{1}[0-9]{9}" placeholder=" " autofill="off" required>
+                    <input id="phoneno" type="tel" name='phoneno' pattern="[1-9]{1}[0-9]{9}" placeholder=" " autofill="off" value="" required>
                     <span class="label" autofill="off">Phone No.</span>
                 </div>
 
                 <div class="form-field">
-                    <button id="btnSignIn">Login</button>
+                    <button id="btnSignUp">Register</button>
+
                 </div>
 
-            </form>
+            </div>
 
             <a href="./desktop3.html">login as Security Official</a>
           </div>
@@ -59,6 +60,8 @@
   <script src="./assets/script/bootstrap.js"></script>
   <script src="./assets/script/jQuery.js"></script>
   <script src="./assets/script/popper.js"></script>
-  <script src="./assets/script/script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+  <script src="./assets/script/newScript.js"></script>
 </body>
 </html>
