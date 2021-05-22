@@ -24,28 +24,29 @@
           <div class="form-wrapper seconday-form-wrapper">
 
             <h1 class="title">Login</h1>
-
-            <div class="alert alert-danger">
-              Something went wrong
+            <div id="error">
+              
             </div>
 
-            <form action=""  class="form">
+            <div class="form">
 
                 <div class="form-field">
-                    <input type="Email" name='email' placeholder=" " autofill="off" required>
+                    <input type="email" name='email' id="email" placeholder=" " value="" autofill="off" required>
                     <span class="label">Email</span>
                 </div>
 
                 <div class="form-field">
-                    <input type="password" name='password' placeholder=" " autofill="off" required>
+                    <input type="password" name='password' id="password" placeholder=" " value="" autofill="off" required>
                     <span class="label" autofill="off">Password</span>
                 </div>
 
                 <div class="form-field">
-                    <input class="submit-btn" type="submit" value="Register">
+                    <!-- <button class="submit-btn" id="authentication" type="submit">Login</button> -->
+                    <button id="btnSignIn">Login</button>
                 </div>
 
-            </form>
+              </div>
+
             <a href="./index.html">Register as User</a>
           </div>
 
@@ -58,6 +59,8 @@
   <script src="./assets/script/bootstrap.js"></script>
   <script src="./assets/script/jQuery.js"></script>
   <script src="./assets/script/popper.js"></script>
-  <script src="./assets/script/script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
+  <script src="./assets/script/newScript.js"></script>
 </body>
 </html>
