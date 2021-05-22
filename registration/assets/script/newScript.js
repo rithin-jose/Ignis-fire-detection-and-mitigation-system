@@ -10,8 +10,27 @@ var firebaseConfig = {
   // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+var btnSignUp = document.getElementById("btnSignUp");
 
+btnSignUp.addEventListener('click',e => {
+    var name = document.getElementById("name");
+    var phoneno = document.getElementById("phoneno");
 
+    var actualName = name.value;
+    var actualPhoneNo = phoneno.value;
+
+    firebase.database().ref('/users/' + actualName).set({
+        name: actualName,
+        phoneno: actualPhoneNo,
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+});
 
 
 var btnSignIn = document.getElementById("btnSignIn");
