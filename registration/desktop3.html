@@ -24,11 +24,11 @@
           <div class="form-wrapper seconday-form-wrapper">
 
             <h1 class="title">Login</h1>
-            <div id="error">
+            <div id="errorBlock">
               
             </div>
 
-            <div class="form">
+            <form class="form" id="loginForm">
 
                 <div class="form-field">
                     <input type="email" name='email' id="email" placeholder=" " value="" autofill="off" required>
@@ -41,11 +41,11 @@
                 </div>
 
                 <div class="form-field">
-                    <!-- <button class="submit-btn" id="authentication" type="submit">Login</button> -->
-                    <button id="btnSignIn">Login</button>
+                    <button class="submit-btn" id="authentication" type="submit">Login</button>
+                    <!-- <button id="btnSignIn">Login</button> -->
                 </div>
 
-              </div>
+              </form>
 
             <a href="./index.html">Register as User</a>
           </div>
@@ -61,6 +61,43 @@
   <script src="./assets/script/popper.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-auth.js"></script>
-  <script src="./assets/script/newScript.js"></script>
+  <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyCZhAKGxyGLCgk1JUxBM27Xqxe2uHj87Jo",
+        authDomain: "ignis-de493.firebaseapp.com",
+        databaseURL: "https://ignis-de493-default-rtdb.firebaseio.com",
+        projectId: "ignis-de493",
+        storageBucket: "ignis-de493.appspot.com",
+        messagingSenderId: "2203901067",
+        appId: "1:2203901067:web:313c2c6d15b5303341488e"
+      };
+      // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    var btnSignIn = document.getElementById("loginForm");
+    
+    btnSignIn.addEventListener('submit',e => {
+        e.preventDefault()
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+
+        var errorBlock = document.getElementById("errorBlock");
+        var codeBlock = '<div class="alert alert-danger">'+'Something went wrong'+'</div>';
+
+        var actualEmail = email.value;
+        var actualPassword = password.value;
+        
+        errorBlock.innerHTML = "";
+
+        firebase.auth().signInWithEmailAndPassword(actualEmail,actualPassword)
+        .then(() => {
+            window.location = '/registration/desktop4.html'
+        })
+        .catch(error => {
+            console.log(error);
+            errorBlock.innerHTML = codeBlock;
+        })
+    });
+  </script>
 </body>
 </html>

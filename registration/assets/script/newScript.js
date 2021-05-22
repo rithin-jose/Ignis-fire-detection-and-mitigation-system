@@ -33,25 +33,5 @@ btnSignUp.addEventListener('click',e => {
 });
 
 
-var btnSignIn = document.getElementById("btnSignIn");
 
-btnSignIn.addEventListener('click',e => {
-    var email = document.getElementById("email");
-    var password = document.getElementById("password");
-    console.log(email,password);
-    var actualEmail = email.value;
-    var actualPassword = password.value;
-    
 
-    firebase.auth().signInWithEmailAndPassword(actualEmail,actualPassword)
-    .then(response => {
-        console.log(response);
-    })
-    .catch(error => {
-        console.log(error);
-        var errorDiv = document.getElementById("error");
-        errorDiv.appendChild(errorBlock)
-    })
-});
-
-var errorBlock = '<div class="alert alert-danger">'+'Something went wrong'+'</div>';
