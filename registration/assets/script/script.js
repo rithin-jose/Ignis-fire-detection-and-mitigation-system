@@ -1,93 +1,3 @@
-
-// const constraints = {
-//   'video': true,
-//   'audio': false
-// }
-
-// navigator.mediaDevices.getUserMedia(constraints)
-// .then(stream => {
-//     console.log('Got MediaStream:', stream);
-// })
-// .catch(error => {
-//     console.error('Error accessing media devices.', error);
-// });
-
-
-
-function getConnectedDevices(type, callback) {
-  navigator.mediaDevices.enumerateDevices()
-      .then(devices => {
-          const filtered = devices.filter(device => device.kind === type);
-          callback(filtered);
-      });
-}
-
-getConnectedDevices('videoinput', cameras => console.log('Cameras found', cameras));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 //   console.log("enumerateDevices() not supported.");
 // }
@@ -120,31 +30,57 @@ getConnectedDevices('videoinput', cameras => console.log('Cameras found', camera
 //   console.log(err.name + ": " + err.message);
 // });
 
-// console.log(cam);
+async function getConnectedDevices(type) {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    var videoDevice = devices.filter(device => device.kind === type);
+    cam = [];
+    videoDevice.forEach(device =>{
+        if(device.deviceId === "")
+        {
+            cam.push(device.groupId)
+        }
+        else
+        {
+            cam.push(device.deviceId)
+        }
+        
+    })
+    return cam;
+}
 
-//   var video = document.querySelector("#videoElement");
-//   var video2 = document.querySelector("#videoElement2");
+let test = document.getElementById("heretest")
 
-// if (navigator.mediaDevices.getUserMedia) {
-//   navigator.mediaDevices.getUserMedia(
-//     { video: { deviceId: { exact: '883b48ae8bca0ab5e53a1c209a658a959756faf4b304bb48fb41ddd4a932e29f' } } }
-//   )
-//     .then(function (stream) {
-//       video.srcObject = stream;
-//     })
-//     .catch(function (error) {
-//       console.log("Something went wrong!");
-//     });
-// }
+// Get the initial set of cameras connected
+getConnectedDevices('videoinput')
+.then((camera)=>{
+    test.innerHTML=""
+    camera.forEach((cam)=>{
+        navigator.mediaDevices.getUserMedia({
+            'video':{'deviceId':cam}
+        })
+        .then(stream => {
+            videoElement.srcObject = stream;
+        })
+        test.innerHTML += '<div class="col-md-4">'+
+                                '<div class="video-window" >'+
+                                    '<video autoplay="true" id="videoElement"></video>'+
+                                '</div>'
+                            '</div>'
+    })
+})
 
-// if (navigator.mediaDevices.getUserMedia) {
-//   navigator.mediaDevices.getUserMedia(
-//     { video: { deviceId: { exact: '3c0fce7fb8ece3413fed1dfa5480cb7b169dfe80706805293bb9f5915d4c57ad' } } }
-//   )
-//     .then(function (stream) {
-//       video2.srcObject = stream;
-//     })
-//     .catch(function (error) {
-//       console.log("Something went wrong!");
-//     });
-// }
+
+// Listen for changes to media devices and update the list accordingly
+navigator.mediaDevices.addEventListener('devicechange', event => {
+    getConnectedDevices('videoinput')
+    .then((camera)=>{
+        test.innerHTML=""
+        camera.forEach((cam)=>{
+            test.innerHTML += '<div class="col-md-4">'+
+                                    '<div class="video-window" >'+
+                                        '<video autoplay="true" id="videoElement"></video>'+
+                                    '</div>'
+                                '</div>'
+        })
+    })
+});
