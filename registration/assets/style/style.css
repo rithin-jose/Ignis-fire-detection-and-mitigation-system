@@ -208,7 +208,6 @@
   background: url('../images/sp.png');
 	height: 100vh;
 	width: 100%;
-	padding-top:10%;
   background-size: cover;
  }
 
@@ -223,6 +222,14 @@
 #videoElement{
   height: 100%;
   width: 100%;
+}
+#camera-heading{
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+#notification{
+  background-color: rgba(255,255,255,0.65);
+	border-radius: 5%;
 }
 
 @media (max-width: 1200px) {

@@ -1,36 +1,126 @@
-if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-  console.log("enumerateDevices() not supported.");
+
+// const constraints = {
+//   'video': true,
+//   'audio': false
+// }
+
+// navigator.mediaDevices.getUserMedia(constraints)
+// .then(stream => {
+//     console.log('Got MediaStream:', stream);
+// })
+// .catch(error => {
+//     console.error('Error accessing media devices.', error);
+// });
+
+
+
+function getConnectedDevices(type, callback) {
+  navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+          const filtered = devices.filter(device => device.kind === type);
+          callback(filtered);
+      });
 }
 
-var video = document.querySelector("#videoElement");
-//   var video = document.querySelector("#videoElement");
+getConnectedDevices('videoinput', cameras => console.log('Cameras found', cameras));
 
-var cam = [];
-navigator.mediaDevices.enumerateDevices()
-.then(function(devices) {
-  devices.forEach(function(device) {
-    console.log(device);
-    if(device.kind == 'videoinput')
-    {
-      if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia(
-          { video: { deviceId: { exact: device.deviceId  } } }
-        )
-          .then(function (stream) {
-            video.srcObject = stream;
-          })
-          .catch(function (error) {
-            console.log("Something went wrong!");
-          });
-      }
-    }
-  });
-})
-.catch(function(err) {
-  console.log(err.name + ": " + err.message);
-});
 
-console.log(cam);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+//   console.log("enumerateDevices() not supported.");
+// }
+
+// var video = document.querySelector("#videoElement");
+// //   var video = document.querySelector("#videoElement");
+
+// var cam = [];
+// navigator.mediaDevices.enumerateDevices()
+// .then(function(devices) {
+//   devices.forEach(function(device) {
+//     console.log(device);
+//     if(device.kind == 'videoinput')
+//     {
+//       if (navigator.mediaDevices.getUserMedia) {
+//         navigator.mediaDevices.getUserMedia(
+//           { video: { deviceId: { exact: device.deviceId  } } }
+//         )
+//           .then(function (stream) {
+//             video.srcObject = stream;
+//           })
+//           .catch(function (error) {
+//             console.log("Something went wrong!");
+//           });
+//       }
+//     }
+//   });
+// })
+// .catch(function(err) {
+//   console.log(err.name + ": " + err.message);
+// });
+
+// console.log(cam);
 
 //   var video = document.querySelector("#videoElement");
 //   var video2 = document.querySelector("#videoElement2");
