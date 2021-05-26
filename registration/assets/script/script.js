@@ -3,7 +3,6 @@ async function getConnectedDevices(type) {
     var videoDevice = devices.filter(device => device.kind === type);
     cam = [];
     videoDevice.forEach(device =>{
-        console.log(device);
         if(device.deviceId === "")
         {
             cam.push(device.groupId)
@@ -21,7 +20,7 @@ let test = document.getElementById("heretest")
 
 function createElement(index)
 {
-    test.innerHTML += '<div class="col-md-4">'+
+    test.innerHTML += '<div class="col-md-4" id="videoBox'+index+'">'+
                             '<div class="video-window" >'+
                                 '<video autoplay="true" class="test" id="videoElement'+index+'"></video>'+
                             '</div>'
@@ -31,9 +30,7 @@ function createElement(index)
 
 function setStream(stream,index)
 {
-    console.log(index);
     video  = document.getElementById('videoElement'+index)
-    console.log(video);
     video.srcObject  = stream;
 }
 
@@ -57,16 +54,9 @@ getConnectedDevices('videoinput')
     })
 })
 
-
-
-
-
-
-
 // Listen for changes to media devices and update the list accordingly
 navigator.mediaDevices.addEventListener('devicechange', event => {
-    test.innerHTML=""
-    
+    test.innerHTML=""    
     getConnectedDevices('videoinput')
     .then((camera)=>{
 
@@ -76,3 +66,11 @@ navigator.mediaDevices.addEventListener('devicechange', event => {
     })
 })
 });
+
+
+var videoWindow = document.getElementById('videoBox0')
+console.log(videoWindow);
+
+videoWindow.addEventListener('click',function(){
+    console.log("click");
+})
