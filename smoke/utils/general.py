@@ -137,14 +137,10 @@ def check_requirements(requirements='requirements.txt', exclude=()):
         except Exception as e:  # DistributionNotFound or VersionConflict if requirements not met
             n += 1
             print(f"{prefix} {r} not found and is required by YOLOv5, attempting auto-update...")
-<<<<<<< HEAD
-            print(subprocess.check_output(f"pip install '{r}'", shell=True).decode())
-=======
             try:
                 print(subprocess.check_output(f"pip install '{r}'", shell=True).decode())
             except Exception as e:
                 print(f'{prefix} {e}')
->>>>>>> edd12cda76caf4e5a790562b581af1567e3e12f4
 
     if n:  # if packages updated
         source = file.resolve() if 'file' in locals() else requirements
@@ -664,13 +660,8 @@ def apply_classifier(x, model, img, im0):
     return x
 
 
-<<<<<<< HEAD
-def save_one_box(xyxy, im, file='image.jpg', gain=1.02, pad=10, square=False, BGR=False):
-    # Save an image crop as {file} with crop size multiplied by {gain} and padded by {pad} pixels
-=======
 def save_one_box(xyxy, im, file='image.jpg', gain=1.02, pad=10, square=False, BGR=False, save=True):
     # Save image crop as {file} with crop size multiple {gain} and {pad} pixels. Save and/or return crop
->>>>>>> edd12cda76caf4e5a790562b581af1567e3e12f4
     xyxy = torch.tensor(xyxy).view(-1, 4)
     b = xyxy2xywh(xyxy)  # boxes
     if square:
@@ -678,15 +669,10 @@ def save_one_box(xyxy, im, file='image.jpg', gain=1.02, pad=10, square=False, BG
     b[:, 2:] = b[:, 2:] * gain + pad  # box wh * gain + pad
     xyxy = xywh2xyxy(b).long()
     clip_coords(xyxy, im.shape)
-<<<<<<< HEAD
-    crop = im[int(xyxy[0, 1]):int(xyxy[0, 3]), int(xyxy[0, 0]):int(xyxy[0, 2])]
-    cv2.imwrite(str(increment_path(file, mkdir=True).with_suffix('.jpg')), crop if BGR else crop[..., ::-1])
-=======
     crop = im[int(xyxy[0, 1]):int(xyxy[0, 3]), int(xyxy[0, 0]):int(xyxy[0, 2]), ::(1 if BGR else -1)]
     if save:
         cv2.imwrite(str(increment_path(file, mkdir=True).with_suffix('.jpg')), crop)
     return crop
->>>>>>> edd12cda76caf4e5a790562b581af1567e3e12f4
 
 
 def increment_path(path, exist_ok=False, sep='', mkdir=False):
