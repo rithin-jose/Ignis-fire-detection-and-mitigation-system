@@ -93,7 +93,7 @@
         .then((userCredential) => {
             var user = userCredential.user;
             window.localStorage.setItem('user',user["email"])
-            window.location = '/registration/desktop4.html'
+            window.location = '/desktop4.html'
         })
         .catch(error => {
             console.log(error);
