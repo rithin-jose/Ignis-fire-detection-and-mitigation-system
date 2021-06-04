@@ -23,6 +23,7 @@ function createElement(index)
     test.innerHTML += '<div class="col-md-4" id="videoBox'+index+'">'+
                             '<div class="video-window" >'+
                                 '<video autoplay="true" class="test" id="videoElement'+index+'"></video>'+
+                                '<p>'+"Camera "+ index+'</p>'+
                             '</div>'
                         '</div>'
 
