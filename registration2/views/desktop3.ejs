@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./assets/style/bootstarp.css">
-  <link rel="stylesheet" href="./assets/style/style.css">
+  <link rel="stylesheet" href="/styles/bootstarp.css">
+  <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
 
@@ -52,7 +52,7 @@
 
               </form>
 
-            <a href="./index.html">Register as User</a>
+            <a href="/">Register as User</a>
           </div>
 
         </div>
@@ -99,7 +99,7 @@
         .then((userCredential) => {
             var user = userCredential.user;
             window.localStorage.setItem('user',user["email"])
-            window.location = '/registration//desktop4.html'
+            window.location = '/dashboard'
         })
         .catch(error => {
             console.log(error);
