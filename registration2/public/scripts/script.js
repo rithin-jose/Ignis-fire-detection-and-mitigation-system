@@ -17,17 +17,21 @@ async function getConnectedDevices(type) {
 }
 
 let test = document.getElementById("heretest")
+let testArray = []
 
-function createElement(index)
+function createElement(index,id)
 {
-    test.innerHTML += '<div class="col-md-4" id="videoBox'+index+'">'+
+    test.innerHTML += '<div class="col-md-4" id="videoBox'+index+'" onclick="testFunction('+id+')">'+
                             '<div class="video-window" >'+
                                 '<video autoplay="true" class="test" id="videoElement'+index+'"></video>'+
                                 '<p>'+"Camera "+ index+'</p>'+
                             '</div>'
-                        '</div>'
+                        '</div>';
+    
+    testArray.push(id)
 
 }
+
 
 function setStream(stream,index)
 {
@@ -50,7 +54,7 @@ getConnectedDevices('videoinput')
 .then((camera)=>{
     test.innerHTML=""
     camera.forEach(function(id,index){
-        createElement(index);
+        createElement(index,id);
         runCamera(id,index);
     })
 })
@@ -62,16 +66,8 @@ navigator.mediaDevices.addEventListener('devicechange', event => {
     .then((camera)=>{
 
     camera.forEach(function(id,index){
-        createElement(index);
+        createElement(index,id);
         runCamera(id,index);
     })
 })
 });
-
-
-var videoWindow = document.getElementById('videoBox0')
-console.log(videoWindow);
-
-videoWindow.addEventListener('click',function(){
-    console.log("click");
-})
