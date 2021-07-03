@@ -104,8 +104,17 @@
 
 
         function mufunction(){
-            
-        }
+
+            fetch('/alert')
+            .then((data) =>{
+                if(data.status == 200 ){
+                    alert("Alert Send")
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })       
+    }
 
     </script>
 </body>
