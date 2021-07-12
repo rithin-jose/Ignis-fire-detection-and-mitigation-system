@@ -1,0 +1,8 @@
+pip install counter
+pip install numpy 
+pip install argparse 
+pip install imutils
+pip install cmake
+pip install dlib
+pip install Opencv-python
+python people_counter.py --prototxt mobilenet_SSD/MobileNetSSD_deploy.prototxt --model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input videos/example_01.mp4 --output output/output_01.avi
